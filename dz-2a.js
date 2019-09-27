@@ -32,7 +32,11 @@ let res = "Нет совпадений";
 
 for (let i=0; i< data.length; i++){
     if (pr === data[i].firstName){
-        alert("user name : " + data[i].firstName + " " + data[i].lastName + "     user age: " + data[i].age);
+        //alert("user name : " + data[i].firstName + " " + data[i].lastName + "     user age: " + data[i].age);
+        let str = `user name :  ${data[i].firstName} 
+        ${data[i].lastName} 
+        user age: ${data[i].age}`
+        alert(str);
         break;
     }
     if (i==(data.length - 1)) {
