@@ -16,6 +16,7 @@ let data=[
         lastName: 'Pit',
         age: 50
     },
+
 ];
 
 function clickButton() {
