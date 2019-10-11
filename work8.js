@@ -106,7 +106,6 @@ if(data2){
 
 addUser.addEventListener('click', function(){
     if(!headTable.length){
-
         console.log(headTable);
         for (let i=0; i< countCells; i++){
             headTable.push(prompt(`vvedite name ${i} stolbca`, `stolbets#${i}`));
