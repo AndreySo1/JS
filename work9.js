@@ -84,4 +84,5 @@ function createTable(data) {
     document.body.prepend(table);
 }
 
+
 getPlanet();
