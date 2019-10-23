@@ -1,0 +1,34 @@
+div {
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+span {
+    padding: 10px 20px;
+    background-color: yellow;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+div span:first-child {
+    margin-left: 0;
+}
+a {
+    padding: 10px 20px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+
+table{
+    display: block;
+}
+td {
+    border: solid #000 1px;
+    width: 100px;
+    height: 20px;
+    background-color: aquamarine;
+}
