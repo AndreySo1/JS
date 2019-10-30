@@ -54,35 +54,84 @@ fetch('https://swapi.co/api/planets/')
 //     console.log('async'+ planet);
 // }
 // getPlanet();
-let numPlunets =5;
+
+
+
+
+
+// задание ввести количество планет и вывести в таблицу информацию из базы
+let numPlanets =+prompt('vvedite 4islo planet', '5');
 let keyArr = ['name', 'diameter', 'rotation_period'];
 
-async function getPlanet() {
-    let planetsRes = await fetch('https://swapi.co/api/planets/');
-    let planetJson = await planetsRes.json();
-    let planet = planetJson.results;
 
-    let length = planet.length;
-    let planetsArr = planet.splice(numPlunets-1, length-numPlunets);
-    console.log(planetsArr);
-    createTable(planetsArr);
-}
+fetch('https://swapi.co/api/planets/')
+    .then(funResponse => funResponse.json())
+    .then(funResult => {
+        let planetsArr = funResult.results;
+        let planets = planetsArr.splice(0, numPlanets);
+        let table = document.createElement('table');
+        let planetsKeys = Object.keys(planets[0]);
+        console.log(planetsKeys);
+        console.log(planets);
+        let buttonContainer = document.createElement('div');
 
-function createTable(data) {
-    let table =document.createElement('table');
+        planetsKeys.forEach(function (item) {
+            let planetButton = document.createElement('span');
+            planetButton.innerHTML = item;
+            buttonContainer.append(planetButton);
+        })
+        document.body.prepend(buttonContainer);
 
-    for(let i =0; i<keyArr.length; i++){
-        let tr = document.createElement('tr');
-        for(let j =0; j< data.length; j++){
-            let td = document.createElement('td');
-            td.innerHTML = data[j].name;
-            tr.append(td);
+        for (let i = 0; i < planets.length; i++) {
+            let tr = document.createElement('tr');
+            let trArr=[];
+// td.innerHTML = planets[i][keyArr[j]]; //аналог ниже
+            for(let z = 0; z<keyArr.length; z++) {
+                for (key in planets[i]) {
+                    if (key == keyArr[z]){
+                        trArr.push(planets[i][key])};
+                        }
+            }
+            console.log(trArr);
+
+            for (let j = 0; j < keyArr.length; j++) {
+                let td = document.createElement('td')
+
+
+                tr.append(td);
+            }
+            table.append(tr);
         }
-        table.append(tr);
-    }
-
-    document.body.prepend(table);
-}
-
-
-getPlanet();
+        document.body.append(table);
+    })
+// async function getPlanet() {
+//     let planetsRes = await fetch('https://swapi.co/api/planets/');
+//     let planetJson = await planetsRes.json();
+//     let planet = planetJson.results;
+//
+//     let length = planet.length;
+//     let planetsArr = planet.splice(numPlunets-1, length-numPlunets);
+//     console.log(planetsArr);
+//     createTable(planetsArr);
+// }
+//
+//
+//
+// function createTable(data) {
+//     let table =document.createElement('table');
+//
+//     for(let i =0; i<keyArr.length; i++){
+//         let tr = document.createElement('tr');
+//         for(let j =0; j< data.length; j++){
+//             let td = document.createElement('td');
+//             td.innerHTML = data[j].name;
+//             tr.append(td);
+//         }
+//         table.append(tr);
+//     }
+//
+//     document.body.prepend(table);
+// }
+//
+//
+// getPlanet();
